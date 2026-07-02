@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Luxury Number Guessing Game</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#050505,#121212,#1d1d1d);
+overflow:hidden;
+}
+
+body::before{
+content:"";
+position:absolute;
+width:500px;
+height:500px;
+background:radial-gradient(circle,#d4af37 0%,transparent 70%);
+opacity:.15;
+animation:rotate 15s linear infinite;
+}
+
+@keyframes rotate{
+100%{transform:rotate(360deg);}
+}
+
+.card{
+position:relative;
+width:420px;
+padding:30px;
+background:#111;
+border:2px solid #d4af37;
+border-radius:20px;
+box-shadow:0 0 30px rgba(212,175,55,.35);
+text-align:center;
+color:white;
+animation:fade 1s;
+}
+
+@keyframes fade{
+from{transform:translateY(20px);opacity:0;}
+to{transform:translateY(0);opacity:1;}
+}
+
+h1{
+color:#d4af37;
+margin-bottom:15px;
+}
+
+.info{
+display:flex;
+justify-content:space-between;
+margin:15px 0;
+font-size:18px;
+}
+
+select,input{
+width:100%;
+padding:12px;
+margin:12px 0;
+background:#1e1e1e;
+color:white;
+border:1px solid #d4af37;
+border-radius:8px;
+font-size:16px;
+}
+
+button{
+width:100%;
+padding:12px;
+margin-top:10px;
+border:none;
+border-radius:8px;
+font-size:18px;
+font-weight:bold;
+background:#d4af37;
+color:black;
+cursor:pointer;
+transition:.3s;
+}
+
+button:hover{
+transform:scale(1.05);
+box-shadow:0 0 20px gold;
+}
+
+#message{
+margin-top:20px;
+font-size:20px;
+font-weight:bold;
+min-height:30px;
+color:#ffd700;
+}
+
+.win{
+animation:flash .8s infinite alternate;
+}
+
+@keyframes flash{
+from{color:#fff;}
+to{color:#ffd700;}
+}
+</style>
+
+</head>
+<body>
+
+<div class="card">
+
+<h1>🎯 Number Guessing</h1>
+
+<select id="difficulty">
+<option value="50">Easy (1-50)</option>
+<option value="100" selected>Medium (1-100)</option>
+<option value="200">Hard (1-200)</option>
+</select>
+
+<div class="info">
+<div>🏆 Score: <span id="score">0</span></div>
+<div>⏱️ <span id="timer">30</span>s</div>
+</div>
+
+<input type="number" id="guess" placeholder="Enter your guess">
+
+<button onclick="guessNumber()">Guess</button>
+
+<button onclick="newGame()">New Game</button>
+
+<div id="message"></div>
+
+</div>
+
+<script>
+
+let max=100;
+let number;
+let score=0;
+let time=30;
+let timer;
+
+const AudioContext=window.AudioContext||window.webkitAudioContext;
+const audio=new AudioContext();
+
+function beep(freq,duration){
+let osc=audio.createOscillator();
+let gain=audio.createGain();
+
+osc.connect(gain);
+gain.connect(audio.destination);
+
+osc.frequency.value=freq;
+osc.type="sine";
+
+osc.start();
+
+gain.gain.setValueAtTime(.1,audio.currentTime);
+gain.gain.exponentialRampToValueAtTime(.0001,audio.currentTime+duration);
+
+osc.stop(audio.currentTime+duration);
+}
+
+function startTimer(){
+
+clearInterval(timer);
+
+time=30;
+document.getElementById("timer").innerHTML=time;
+
+timer=setInterval(()=>{
+
+time--;
+document.getElementById("timer").innerHTML=time;
+
+if(time<=0){
+clearInterval(timer);
+document.getElementById("message").innerHTML="⌛ Time Over! Number was "+number;
+beep(180,.5);
+}
+
+},1000);
+
+}
+
+function newGame(){
+
+max=parseInt(document.getElementById("difficulty").value);
+
+number=Math.floor(Math.random()*max)+1;
+
+document.getElementById("message").innerHTML="Guess a number between 1 and "+max;
+
+document.getElementById("guess").value="";
+
+startTimer();
+
+}
+
+function guessNumber(){
+
+let g=parseInt(document.getElementById("guess").value);
+
+let msg=document.getElementById("message");
+
+if(isNaN(g)){
+msg.innerHTML="Enter a number!";
+return;
+}
+
+if(g==number){
+
+score+=10;
+
+document.getElementById("score").innerHTML=score;
+
+msg.innerHTML="🎉 Correct! Starting next round...";
+
+msg.classList.add("win");
+
+beep(700,.25);
+beep(900,.25);
+
+clearInterval(timer);
+
+setTimeout(()=>{
+msg.classList.remove("win");
+newGame();
+},1500);
+
+}
+
+else if(g<number){
+
+msg.innerHTML="⬆ Too Low";
+
+beep(350,.12);
+
+}
+
+else{
+
+msg.innerHTML="⬇ Too High";
+
+beep(250,.12);
+
+}
+
+}
+
+newGame();
+
+</script>
+
+</body>
+</html>

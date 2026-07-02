@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced To-Do List</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Header -->
+    <header>
+
+        <div class="logo">
+            <i class="fa-solid fa-list-check"></i>
+            <h1>Advanced Todo</h1>
+        </div>
+
+        <button id="themeBtn">
+            <i class="fa-solid fa-moon"></i>
+        </button>
+
+    </header>
+
+    <!-- Dashboard -->
+
+    <section class="dashboard">
+
+        <div class="card">
+            <h3>Total</h3>
+            <p id="totalTask">0</p>
+        </div>
+
+        <div class="card">
+            <h3>Completed</h3>
+            <p id="completedTask">0</p>
+        </div>
+
+        <div class="card">
+            <h3>Pending</h3>
+            <p id="pendingTask">0</p>
+        </div>
+
+    </section>
+
+    <!-- Progress -->
+
+    <section class="progress-section">
+
+        <div class="progress-text">
+
+            <span>Task Progress</span>
+
+            <span id="progressPercent">0%</span>
+
+        </div>
+
+        <div class="progress-bar">
+
+            <div id="progressFill"></div>
+
+        </div>
+
+    </section>
+
+    <!-- Add Task -->
+
+    <section class="add-task">
+
+        <input
+            type="text"
+            id="taskInput"
+            placeholder="Enter your task">
+
+        <select id="priority">
+
+            <option value="High">High</option>
+
+            <option value="Medium">Medium</option>
+
+            <option value="Low">Low</option>
+
+        </select>
+
+        <select id="category">
+
+            <option>Personal</option>
+
+            <option>Study</option>
+
+            <option>Work</option>
+
+            <option>Shopping</option>
+
+            <option>Others</option>
+
+        </select>
+
+        <input
+            type="date"
+            id="dueDate">
+
+        <button id="addBtn">
+
+            <i class="fa-solid fa-plus"></i>
+
+            Add
+
+        </button>
+
+    </section>
+
+    <!-- Search -->
+
+    <section class="search-box">
+
+        <input
+            type="text"
+            id="searchTask"
+            placeholder="Search task...">
+
+    </section>
+
+    <!-- Filters -->
+
+    <section class="filters">
+
+        <button class="filter active" data-filter="all">
+
+            All
+
+        </button>
+
+        <button class="filter" data-filter="active">
+
+            Active
+
+        </button>
+
+        <button class="filter" data-filter="completed">
+
+            Completed
+
+        </button>
+
+    </section>
+
+    <!-- Clear -->
+
+    <section class="clear">
+
+        <button id="clearCompleted">
+
+            Clear Completed
+
+        </button>
+
+        <button id="exportBtn">
+
+            Export JSON
+
+        </button>
+
+        <button id="importBtn">
+
+            Import JSON
+
+        </button>
+
+        <input
+            type="file"
+            id="fileInput"
+            hidden>
+
+    </section>
+
+    <!-- Task List -->
+
+    <section>
+
+        <ul id="taskList">
+
+        </ul>
+
+    </section>
+
+</div>
+
+<!-- Toast -->
+
+<div id="toast">
+
+    Task Added Successfully
+
+</div>
+
+<!-- Template -->
+
+<template id="taskTemplate">
+
+<li class="task">
+
+    <div class="left">
+
+        <input
+            type="checkbox"
+            class="complete">
+
+        <div class="details">
+
+            <h3 class="taskName"></h3>
+
+            <div class="meta">
+
+                <span class="priority"></span>
+
+                <span class="category"></span>
+
+                <span class="date"></span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="actions">
+
+        <button class="edit">
+
+            <i class="fa-solid fa-pen"></i>
+
+        </button>
+
+        <button class="delete">
+
+            <i class="fa-solid fa-trash"></i>
+
+        </button>
+
+    </div>
+
+</li>
+
+</template>
+
+<script src="script.js"></script>
+
+</body>
+</html>

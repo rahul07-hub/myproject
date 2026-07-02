@@ -1,0 +1,59 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f8ff;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    width: 70%;
+    margin: auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+h1 {
+    text-align: center;
+    color: navy;
+}
+
+h2 {
+    color: rgb(4, 7, 4);
+    border-bottom: 2px solid gray;
+    padding-bottom: 5px;
+}
+
+.profile {
+    display: block;
+    margin: auto;
+    width: 150px;
+    border-radius: 50%;
+}
+
+.education-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.education-table th,
+.education-table td {
+    border: 2px solid black;
+    padding: 10px;
+    text-align: center;
+}
+
+.education-table th {
+    background-color: #333;
+    color: white;
+}
+
+a {
+    text-decoration: none;
+    color: blue;
+}
+
+a:hover {
+    color: red;
+}
