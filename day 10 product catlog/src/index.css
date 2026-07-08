@@ -1,0 +1,11 @@
+/* Basic reset for Vite App */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #070913;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
