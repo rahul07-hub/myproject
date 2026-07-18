@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+ import { useState, useEffect } from 'react';
 import './App.css';
 
 /* ==================================================================
@@ -19,7 +19,7 @@ const CATEGORY_DATA = [
   { name: "Men's Clothing",  icon: "👔", tagline: "Men's Apparel",        heroImg: U("1617137968427-85924c800a22") },
   { name: "Women's Clothing",icon: "👚", tagline: "Women's Style",        heroImg: U("1525507119028-ed4c629a60a3") },
   { name: "Kids Wear",       icon: "👶", tagline: "Kids Outfits",          heroImg: U("1622290319048-705756507022") },
-  { name: "Sarees",          icon: "🧣", tagline: "Traditional Sarees",   heroImg: U("1610030469983-98e550d6193c") },
+  { name: "Sarees",          icon: "🧣", tagline: "Traditional Sarees",    heroImg: U("1610030469983-98e550d6193c") },
   { name: "Kurtas",          icon: "🥋", tagline: "Ethnic Kurtas",        heroImg: U("1617627143767-d8e21194783b") },
   { name: "Shoes",           icon: "👟", tagline: "Branded Footwear",      heroImg: U("1542291026-7eec264c27ff") },
   { name: "Bags",            icon: "🎒", tagline: "Backpacks & Bags",      heroImg: U("1553062407-98eeb64c6a62") },
@@ -819,8 +819,7 @@ function App() {
           </section>
 
           {/* Categories Cards Showcase */}
-          <section className="fk-showcase">
-            <h2 className="fk-section-title">Shop by Category</h2>
+          <section className="fk-showcase">            <h2 className="fk-section-title">Shop by Category</h2>
             <div className="fk-showcase-grid">
               {(apiCategories.length > 0 ? apiCategories : CATEGORY_DATA).map(c => (
                 <div key={c.name} className="fk-showcase-card" onClick={() => goCategory(c.name)}>

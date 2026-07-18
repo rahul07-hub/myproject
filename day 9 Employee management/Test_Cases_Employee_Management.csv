@@ -1,0 +1,199 @@
+Test Case ID,Module,Test Case Title,Pre-Conditions,Test Steps,Test Data,Expected Result,Actual Result,Status,Priority
+TC_DASH_001,Dashboard,Dashboard loads after login,User is logged in,"1. Login with valid credentials
+2. Observe dashboard page",N/A,Dashboard displays correctly with Hero banner greeting user by name.,,Not Tested,High
+TC_DASH_002,Dashboard,Total Employees metric card shows correct count,6 employees are seeded in DB,"1. Login
+2. View 'Total Employees' stat card on Dashboard",6 employees seeded,Total Employees card shows 6.,,Not Tested,High
+TC_DASH_003,Dashboard,Active Employees metric is accurate,Employees are seeded,"1. Login
+2. View 'Active Employees' stat card",5 active employees seeded,Active Employees card shows 5.,,Not Tested,High
+TC_DASH_004,Dashboard,On Leave metric is accurate,Employees are seeded,"1. Login
+2. View 'On Leave' stat card",1 employee on leave (Ravi Patel),On Leave card shows 1.,,Not Tested,High
+TC_DASH_005,Dashboard,Departments metric is accurate,Employees in multiple departments,"1. Login
+2. View 'Departments' stat card",6 unique departments,Departments card shows 6.,,Not Tested,High
+TC_DASH_006,Dashboard,Quick action cards navigate correctly,User is on Dashboard,"1. Click each Quick Action card: Add Employee / Departments / Payroll / Reports / Attendance
+2. Verify navigation",N/A,Each card navigates to the correct page route.,,Not Tested,Medium
+TC_DASH_007,Dashboard,Add Employee button on dashboard opens modal,User is on Dashboard,"1. Click 'Add Employee' button in Hero Banner
+2. Observe behavior",N/A,The Add Employee modal opens correctly.,,Not Tested,Medium
+TC_DASH_008,Dashboard,Dark mode toggle works on Dashboard,User is on Dashboard,"1. Click the Moon/Sun icon in TopBar
+2. Observe theme change",N/A,Page switches between light and dark theme smoothly.,,Not Tested,Medium
+TC_DASH_009,Dashboard,Charts render without errors,User is on Dashboard,"1. Login
+2. Scroll down on dashboard to charts section",N/A,Growth and Attendance bar/area charts render with data visible.,,Not Tested,Medium
+TC_DASH_010,Dashboard,Pie chart shows department distribution,Employees in multiple depts,"1. Login
+2. View Department Distribution pie chart",N/A,Pie chart renders and shows slices for all departments.,,Not Tested,Low
+TC_EMP_001,Employee Management,Employee List page loads with data,User is logged in,1. Navigate to /employees,N/A,Employee table displays all 6 seeded employees.,,Not Tested,High
+TC_EMP_002,Employee Management,Search by employee name,User is on /employees,"1. Type 'Amit' in the search bar
+2. Observe filtered results",Search term: Amit,Only employees with 'Amit' in name/email/role are shown.,,Not Tested,High
+TC_EMP_003,Employee Management,Search by email,User is on /employees,1. Type 'priya' in the search bar,Search term: priya,Employee with email containing 'priya' is shown.,,Not Tested,High
+TC_EMP_004,Employee Management,Search by role/designation,User is on /employees,1. Type 'Engineer' in the search bar,Search term: Engineer,Employees with 'Engineer' in role field are shown.,,Not Tested,Medium
+TC_EMP_005,Employee Management,Filter by Department - Engineering,User is on /employees,1. Select 'Engineering' from Department dropdown filter,Department: Engineering,Only Engineering department employees are shown.,,Not Tested,High
+TC_EMP_006,Employee Management,Filter by Status Active,User is on /employees,1. Select 'Active' from Status dropdown,Status: Active,Only Active employees are shown.,,Not Tested,High
+TC_EMP_007,Employee Management,Filter by Status On Leave,User is on /employees,1. Select 'On Leave' from Status dropdown,Status: On Leave,Only employees with 'On Leave' status are shown.,,Not Tested,High
+TC_EMP_008,Employee Management,Combined Search and Department Filter,User is on /employees,"1. Select 'Engineering' from Department dropdown
+2. Type 'Amit' in search bar","Dept: Engineering
+Search: Amit",Only Amit Kumar from Engineering is shown.,,Not Tested,Medium
+TC_EMP_009,Employee Management,Pagination controls appear with many employees,More than 6 employees exist,"1. Add more than 6 employees
+2. Navigate to /employees
+3. Observe pagination",N/A,Pagination controls appear. Table shows 6 records per page.,,Not Tested,Medium
+TC_EMP_010,Employee Management,Employee count label is accurate,User is on /employees,"1. Navigate to /employees
+2. Read the subtitle below the page heading",N/A,Subtitle shows '6 employees found'.,,Not Tested,Low
+TC_EMP_011,Employee Management,EMP ID displays in correct format,User is on /employees,"1. Navigate to /employees
+2. Observe EMP ID column",N/A,Employee IDs shown as EMP001 / EMP002 etc. in monospace font.,,Not Tested,Low
+TC_EMP_012,Employee Management,Status badge color coding is correct,User is on /employees,"1. Navigate to /employees
+2. Observe Status column badges",N/A,Active = green badge; On Leave = yellow badge; Inactive = grey badge.,,Not Tested,Low
+TC_EMP_013,Employee Management,Export CSV downloads correct file,User is on /employees,"1. Click 'Export CSV' button
+2. Open downloaded file",N/A,CSV file downloads with employee data matching the current filtered list.,,Not Tested,Medium
+TC_EMP_014,Employee Management,Edit employee opens modal with prefilled data,User is on /employees,"1. Click the Edit (pencil) icon for Amit Kumar
+2. Observe modal",N/A,Edit modal opens with all fields prefilled with Amit Kumar's data.,,Not Tested,High
+TC_EMP_015,Employee Management,Delete employee prompts confirmation,User is on /employees,"1. Click the Delete (trash) icon for any employee
+2. Observe prompt",N/A,Browser confirm dialog appears asking 'Are you sure you want to delete [name]?',,Not Tested,High
+TC_EMP_016,Employee Management,Delete employee - confirm removes record,User is on /employees,"1. Click Delete for an employee
+2. Click OK on confirm dialog",N/A,Employee is removed from the list. Success toast notification appears.,,Not Tested,High
+TC_EMP_017,Employee Management,Delete employee - cancel keeps record,User is on /employees,"1. Click Delete for an employee
+2. Click Cancel on confirm dialog",N/A,Employee remains in the list. No changes are made.,,Not Tested,High
+TC_EMP_018,Employee Management,Add Employee page loads correctly,User is logged in,1. Navigate to /add-employee,N/A,Page loads with Personal Information and Professional Details form sections.,,Not Tested,High
+TC_EMP_019,Employee Management,Submit form with all valid fields,User is on /add-employee,"1. Fill Full Name
+2. Fill Email
+3. Fill Phone
+4. Fill Location
+5. Select Department
+6. Fill Designation
+7. Fill Manager
+8. Select Status
+9. Fill Join Date
+10. Fill Salary
+11. Fill Skills
+12. Click Add Employee","Name: Jane Doe
+Email: jane@company.com
+Dept: Engineering
+Role: Frontend Dev",Success screen appears. Employee is added to the system.,,Not Tested,High
+TC_EMP_020,Employee Management,Submit form without Full Name (required),User is on /add-employee,"1. Leave Full Name empty
+2. Fill other required fields
+3. Click Add Employee",Name: (empty),Form shows 'Full name is required' error under Name field.,,Not Tested,High
+TC_EMP_021,Employee Management,Submit form without Email (required),User is on /add-employee,"1. Fill Full Name
+2. Leave Email empty
+3. Fill other required fields
+4. Click Add Employee",Email: (empty),Form shows 'Email is required' error under Email field.,,Not Tested,High
+TC_EMP_022,Employee Management,Submit form with invalid Email format,User is on /add-employee,"1. Fill Full Name
+2. Enter invalid email format
+3. Fill other required fields
+4. Click Add Employee",Email: notanemail,Form shows 'Invalid email format' error.,,Not Tested,High
+TC_EMP_023,Employee Management,Submit form without Department (required),User is on /add-employee,"1. Fill Name and Email
+2. Leave Department unselected
+3. Fill Role
+4. Click Add Employee",Department: (not selected),Form shows 'Department is required' error.,,Not Tested,High
+TC_EMP_024,Employee Management,Submit form without Role (required),User is on /add-employee,"1. Fill Name / Email / Department
+2. Leave Role empty
+3. Click Add Employee",Role: (empty),Form shows 'Role is required' error.,,Not Tested,High
+TC_EMP_025,Employee Management,Reset Form button clears all fields,Some data entered in form,"1. Fill in some form fields
+2. Click Reset Form button",N/A,All form fields are cleared back to defaults.,,Not Tested,Medium
+TC_EMP_026,Employee Management,Success screen shows after valid submission,Valid form data submitted,"1. Fill all required fields
+2. Click Add Employee",Valid employee data,Animated success screen appears with 'Employee Added!' message.,,Not Tested,Medium
+TC_EMP_027,Employee Management,New employee appears in Employee List after add,Employee successfully added,"1. Navigate to /employees after successful add
+2. Search for the new employee",Search: Jane Doe,Jane Doe appears in the employee list.,,Not Tested,High
+TC_EMP_028,Employee Management,Add Employee modal opens from TopBar button,User is logged in,1. Click 'Add Employee' button in TopBar,N/A,Add Employee modal appears with empty form.,,Not Tested,High
+TC_EMP_029,Employee Management,Modal closes when clicking X button,Modal is open,"1. Open Add Employee modal
+2. Click the X (close) button",N/A,Modal closes and returns to current page.,,Not Tested,High
+TC_EMP_030,Employee Management,Modal closes when clicking outside overlay,Modal is open,"1. Open Add Employee modal
+2. Click on the dark overlay background outside the modal",N/A,Modal closes.,,Not Tested,Medium
+TC_EMP_031,Employee Management,Modal closes when clicking Cancel button,Modal is open,"1. Open Add Employee modal
+2. Click Cancel button",N/A,Modal closes.,,Not Tested,Medium
+TC_EMP_032,Employee Management,Edit modal shows 'Edit Employee' title,User clicked Edit icon on an employee,"1. Navigate to /employees
+2. Click Edit for any employee
+3. Read modal title",N/A,Modal title shows 'Edit Employee' (not 'Add Employee').,,Not Tested,Medium
+TC_EMP_033,Employee Management,Save Employee updates data successfully,Edit modal is open,"1. Open edit modal
+2. Change employee's Department to 'Design'
+3. Click Save Employee",Department: Design,Toast shows 'Employee updated successfully'. Employee list reflects the change.,,Not Tested,High
+TC_EMP_034,Employee Management,Validation works inside modal,Modal is open,"1. Open Add Employee modal
+2. Leave Name empty
+3. Click Save Employee",N/A,Error toast 'Please fill all required fields' shown. Inline errors visible.,,Not Tested,High
+TC_EMP_035,Employee Management,Performance page loads correctly,User is logged in,1. Navigate to /performance,N/A,Page loads with performance review data for employees.,,Not Tested,High
+TC_EMP_036,Employee Management,Star ratings display correctly,User is on /performance,"1. Navigate to /performance
+2. Observe rating column for employees",N/A,Star ratings render correctly for each employee.,,Not Tested,Medium
+TC_EMP_037,Employee Management,Charts on Performance page render,User is on /performance,"1. Navigate to /performance
+2. Scroll through page",N/A,Charts and metrics render without JavaScript error.,,Not Tested,Low
+TC_DEPT_001,Departments,Department page loads correctly,User is logged in,1. Navigate to /departments,N/A,Page loads showing 4 metric cards and 8 department cards.,,Not Tested,High
+TC_DEPT_002,Departments,Total Departments metric card is correct,User is on /departments,"1. Count department cards shown
+2. Compare with metric card value",8 departments,Metric card shows '8'.,,Not Tested,Medium
+TC_DEPT_003,Departments,Total Employees metric is correct,User is on /departments,1. View Total Employees metric card,Sum of all employees across depts,Metric card shows the sum of all department employees.,,Not Tested,Medium
+TC_DEPT_004,Departments,Each department card shows correct data,User is on /departments,"1. Review each department card
+2. Verify name / head / location / budget",Static data from code,Each card shows correct department data.,,Not Tested,Low
+TC_DEPT_005,Departments,Department cards animate on page load,User navigates to /departments,"1. Navigate to /departments
+2. Observe card entrance animation",N/A,Cards fade and slide up with staggered delay (framer-motion).,,Not Tested,Low
+TC_DEPT_006,Departments,Add Department button is visible,User is on /departments,"1. Navigate to /departments
+2. Look for Add Department button",N/A,Button with '+ Add Department' label is visible in page header.,,Not Tested,Low
+TC_ATT_001,Attendance,Attendance page loads correctly,User is logged in,1. Navigate to /attendance,N/A,Page loads with metric cards and attendance table.,,Not Tested,High
+TC_ATT_002,Attendance,Present count metric is correct,User is on /attendance,"1. Navigate to /attendance
+2. View 'On Time / Present' metric",4 present in mock data,Metric shows 4.,,Not Tested,Medium
+TC_ATT_003,Attendance,Late count metric is correct,User is on /attendance,"1. Navigate to /attendance
+2. View 'Late Arrivals' metric",2 late in mock data,Metric shows 2.,,Not Tested,Medium
+TC_ATT_004,Attendance,Absent count metric is correct,User is on /attendance,"1. Navigate to /attendance
+2. View 'Absent' metric",1 absent in mock data,Metric shows 1.,,Not Tested,Medium
+TC_ATT_005,Attendance,Date picker changes selected date,User is on /attendance,"1. Navigate to /attendance
+2. Change the date picker to a different date",Any past date,Date picker value updates to selected date.,,Not Tested,Low
+TC_ATT_006,Attendance,Weekly stats chart renders,User is on /attendance,"1. Navigate to /attendance
+2. Scroll to weekly attendance bar chart",N/A,Bar chart renders with Mon-Fri data.,,Not Tested,Low
+TC_ATT_007,Attendance,Status badges render with correct colors,User is on /attendance,"1. Navigate to /attendance
+2. Observe Status column in table",N/A,Present=green / Late=yellow / Absent=red / On Leave=grey badges.,,Not Tested,Low
+TC_LEAVE_001,Leave Management,Leave Management page loads correctly,User is logged in,1. Navigate to /leave,N/A,Page loads showing leave metric cards and leave requests table.,,Not Tested,High
+TC_LEAVE_002,Leave Management,Leave metrics display on page load,User is on /leave,"1. Navigate to /leave
+2. Check all metric cards",Static mock data,All metric cards (Pending/Approved/Rejected/On Leave Today) show values.,,Not Tested,Medium
+TC_LEAVE_003,Leave Management,Approve button changes status to Approved,User is on /leave with pending requests,"1. Click Approve button on a pending leave request
+2. Observe status badge",N/A,Status badge changes from Pending to Approved. Toast notification shown.,,Not Tested,High
+TC_LEAVE_004,Leave Management,Reject button changes status to Rejected,User is on /leave with pending requests,"1. Click Reject button on a pending leave request
+2. Observe status badge",N/A,Status badge changes from Pending to Rejected.,,Not Tested,High
+TC_LEAVE_005,Leave Management,Approved leave request shows green badge,User approved a leave request,"1. After approving a leave
+2. Observe the row badge styling",N/A,Approved request shows green/success styled badge.,,Not Tested,Low
+TC_PAY_001,Payroll,Payroll page loads correctly,User is logged in,1. Navigate to /payroll,N/A,Page loads with payroll table and summary metrics.,,Not Tested,High
+TC_PAY_002,Payroll,Payroll data is displayed in table,User is on /payroll,"1. Navigate to /payroll
+2. Observe payroll list",N/A,Mock payroll records are displayed with employee name / department / salary / status.,,Not Tested,Medium
+TC_PAY_003,Payroll,Generate/Export payroll button is accessible,User is on /payroll,"1. Navigate to /payroll
+2. Look for export or generate button",N/A,Button to generate payroll report is visible on the page.,,Not Tested,Low
+TC_RPT_001,Reports & Analytics,Reports page loads correctly,User is logged in,1. Navigate to /reports,N/A,Reports & Analytics page loads with charts and report options.,,Not Tested,High
+TC_RPT_002,Reports & Analytics,Charts render with data on reports page,User is on /reports,"1. Navigate to /reports
+2. Observe all chart widgets",N/A,All charts render without JavaScript errors.,,Not Tested,Medium
+TC_RPT_003,Reports & Analytics,Export report button is accessible,User is on /reports,"1. Navigate to /reports
+2. Look for any export button",N/A,Export button (CSV/PDF) is visible on the page.,,Not Tested,Medium
+TC_SET_001,Settings,Settings page loads correctly,User is logged in,1. Navigate to /settings,N/A,Account Settings page loads with tab navigation.,,Not Tested,High
+TC_SET_002,Settings,Profile Settings tab is default active,User is on /settings,"1. Navigate to /settings
+2. Observe which tab is highlighted",N/A,Profile Settings tab is highlighted/active by default.,,Not Tested,Medium
+TC_SET_003,Settings,Tab switching works with animation,User is on /settings,"1. Click Security tab
+2. Click Notifications tab
+3. Click Appearance tab",N/A,Content area updates with fade animation when switching tabs.,,Not Tested,Medium
+TC_SET_004,Settings,Save button is visible on profile tab,User is on /settings,"1. Navigate to /settings
+2. Look for Save button in profile tab",N/A,Save button is visible in the Profile Settings tab.,,Not Tested,Low
+TC_SET_005,Settings,Sidebar renders all navigation items,User is logged in,1. Observe sidebar on any page,N/A,Sidebar shows all 10 nav items: Dashboard / Employees / Add Employee / Departments / Attendance / Leave / Payroll / Performance / Reports / Settings.,,Not Tested,High
+TC_SET_006,Settings,Active nav item is highlighted,User is on Employee List page,"1. Click 'Employee List' in sidebar
+2. Observe nav item styling",N/A,Employee List nav item has active class with distinct highlight.,,Not Tested,Medium
+TC_SET_007,Settings,Sidebar collapse toggle works,User is logged in,"1. Click the collapse arrow button on sidebar header
+2. Observe sidebar state",N/A,Sidebar collapses to icon-only mode. Main content area expands.,,Not Tested,Medium
+TC_SET_008,Settings,Collapsed sidebar shows tooltips on hover,Sidebar is in collapsed state,"1. Collapse sidebar
+2. Hover over each nav icon",N/A,Tooltip with nav item label appears on hover.,,Not Tested,Low
+TC_SET_009,Settings,Mobile hamburger opens sidebar,Viewport width less than 768px,"1. Resize browser to mobile width
+2. Click hamburger menu icon in TopBar",N/A,Sidebar slides in from left with dark overlay.,,Not Tested,Medium
+TC_SET_010,Settings,Clicking overlay closes mobile sidebar,Mobile sidebar is open,1. Click the dark overlay area beside open sidebar,N/A,Mobile sidebar closes.,,Not Tested,Medium
+TC_SET_011,Settings,Sidebar user name shows logged-in user,User is logged in as Admin,"1. Check bottom of sidebar
+2. Read the user name displayed",Logged in as admin@zoho.com,Sidebar shows 'Admin' (from logged-in user) not hardcoded text.,,Not Tested,Medium
+TC_SET_012,Settings,Topbar greeting shows correct user name,User is logged in,1. Observe TopBar greeting text,N/A,TopBar shows 'Hi Admin 👋' (logged-in user's first name).,,Not Tested,Medium
+TC_SET_013,Settings,Notification bell shows unread count badge,User is logged in,1. Observe notification bell icon in TopBar,N/A,Bell icon shows red badge with unread count (2).,,Not Tested,Low
+TC_SET_014,Settings,Notification dropdown opens on bell click,User is logged in,1. Click the bell icon in TopBar,N/A,Notification dropdown opens showing list of recent notifications.,,Not Tested,Medium
+TC_SET_015,Settings,Mark all read clears notification badge,Notification dropdown is open,"1. Open notification dropdown
+2. Click 'Mark all read'",N/A,All notifications marked as read. Badge disappears from bell icon.,,Not Tested,Low
+TC_SET_016,Settings,Notification dropdown closes on outside click,Notification dropdown is open,"1. Open notification dropdown
+2. Click anywhere outside the dropdown",N/A,Dropdown closes.,,Not Tested,Low
+TC_SET_017,Settings,Dark mode toggle switches theme globally,User is logged in,"1. Click Moon icon in TopBar
+2. Click Sun icon to toggle back",N/A,Theme switches between dark and light mode across all pages.,,Not Tested,Medium
+TC_SET_018,Settings,Search bar is visible in TopBar,User is logged in,1. Observe center section of TopBar,N/A,Search bar with placeholder 'Search employees departments...' is visible.,,Not Tested,Low
+TC_SET_019,Settings,Success toast appears after adding employee,Employee successfully added,"1. Add a new employee via modal
+2. Observe toast notification area",N/A,Green success toast with check icon appears. Disappears after 3.5 seconds.,,Not Tested,Medium
+TC_SET_020,Settings,Error toast appears on failed save,Required fields missing in modal form,"1. Open Add Employee modal
+2. Click Save without filling required fields",N/A,Red error toast with alert icon appears showing error message.,,Not Tested,Medium
+TC_SET_021,Settings,Success toast appears after deleting employee,Employee delete confirmed,"1. Delete an employee and confirm dialog
+2. Observe toast",N/A,Toast shows '[Employee Name] has been removed'.,,Not Tested,Medium
+TC_SET_022,Settings,Toast auto-dismisses after 3.5 seconds,Toast notification is visible,"1. Trigger a toast notification
+2. Wait and observe",N/A,Toast disappears automatically after approximately 3.5 seconds.,,Not Tested,Low
+TC_SET_023,Settings,Layout adapts on mobile viewport,Browser set to 375px wide,"1. Open DevTools
+2. Set viewport to 375px
+3. Navigate through pages",Viewport: 375px,Sidebar is hidden. Hamburger icon visible. Content stacks vertically.,,Not Tested,High
+TC_SET_024,Settings,Layout adapts on tablet viewport,Browser set to 768px wide,"1. Set viewport to 768px
+2. Navigate through pages",Viewport: 768px,Layout adjusts appropriately for tablet screen size.,,Not Tested,Medium
+TC_SET_025,Settings,Employee table scrolls horizontally on mobile,Mobile viewport active,"1. Navigate to /employees on mobile width
+2. Try scrolling the table horizontally",Viewport: 375px,Table scrolls horizontally without breaking page layout.,,Not Tested,Medium

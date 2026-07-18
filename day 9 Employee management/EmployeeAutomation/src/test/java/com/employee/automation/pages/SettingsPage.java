@@ -1,0 +1,62 @@
+package com.employee.automation.pages;
+
+import com.employee.automation.utils.WaitUtility;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+public class SettingsPage {
+
+    private final WebDriver driver;
+    private final WaitUtility wait;
+
+    private final By settingsNavLink = By.cssSelector("a[href='/settings']");
+    private final By pageHeading     = By.xpath("//h1[contains(text(),'Settings') or contains(text(),'Profile')]");
+    private final By nameInput       = By.cssSelector("input[name='name'], input[placeholder*='name' i]");
+    private final By saveButton      = By.xpath("//button[contains(.,'Save') or contains(.,'Update')]");
+    private final By profileSection  = By.xpath("//*[contains(text(),'Profile') or contains(text(),'Account')]");
+
+    public SettingsPage(WebDriver driver, WaitUtility wait) {
+        this.driver = driver;
+        this.wait   = wait;
+    }
+
+    public void navigateToSettings() {
+        wait.safeNavigate(driver, settingsNavLink);
+        wait.demoPause();
+    }
+
+    public boolean isPageLoaded() {
+        try { wait.waitForVisible(pageHeading); return true; }
+        catch (Exception e) { return false; }
+    }
+
+    public String getPageHeading() {
+        return wait.waitForVisible(pageHeading).getText();
+    }
+
+    public boolean isProfileSectionVisible() {
+        try { return wait.waitForVisible(profileSection).isDisplayed(); }
+        catch (Exception e) { return false; }
+    }
+
+    public void updateName(String newName) {
+        try {
+            WebElement el = wait.waitForVisible(nameInput);
+            el.clear();
+            el.sendKeys(newName);
+            wait.demoPause();
+        } catch (Exception e) {
+            System.out.println("[SETTINGS] Name field not found: " + e.getMessage());
+        }
+    }
+
+    public void clickSave() {
+        try {
+            wait.waitForClickable(saveButton).click();
+            wait.demoPause();
+        } catch (Exception e) {
+            System.out.println("[SETTINGS] Save button not found: " + e.getMessage());
+        }
+    }
+}
