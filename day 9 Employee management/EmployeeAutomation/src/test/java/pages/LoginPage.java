@@ -23,12 +23,7 @@ public class LoginPage {
     }
 
     public boolean isLoginPageDisplayed() {
-        try {
-            wait.waitForVisible(emailInput);
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
+        return driver.getCurrentUrl().contains("/login");
     }
 
     public void enterEmail(String email) {

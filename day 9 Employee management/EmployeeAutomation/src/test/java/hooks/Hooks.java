@@ -5,7 +5,6 @@ import io.cucumber.java.After;
 import io.cucumber.java.Scenario;
 import utils.DriverFactory;
 import utils.ScreenshotUtility;
-import pages.LoginPage;
 import utils.WaitUtility;
 import com.employee.automation.config.ConfigReader;
 import org.openqa.selenium.WebDriver;
@@ -21,15 +20,10 @@ public class Hooks {
     public void setUp() {
         if (!suiteSetupDone) {
             System.out.println("=================================================");
-            System.out.println("  INITIALIZING BROWSER & PERFORMING ONE-TIME LOGIN ");
+            System.out.println("  INITIALIZING BROWSER SESSION ");
             System.out.println("=================================================");
             driver = DriverFactory.getDriver();
             driver.get(ConfigReader.BASE_URL);
-            
-            // Perform login only once
-            WaitUtility wait = new WaitUtility(driver);
-            LoginPage loginPage = new LoginPage(driver, wait);
-            loginPage.login(ConfigReader.ADMIN_EMAIL, ConfigReader.ADMIN_PASSWORD);
             
             // Register JVM shutdown hook to close the browser only once at the end
             Runtime.getRuntime().addShutdownHook(new Thread(() -> {
